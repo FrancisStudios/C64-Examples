@@ -5,8 +5,10 @@ This repository contains a collection of C64 assembly programettes / snippets th
 ![image](./res/commodore.png)
 
 ```
-IMPORTANT: this project is for educational purposes. You can compile and run, modify and do whatever you like
-with the example code.
+IMPORTANT: this project is for educational purposes. You can compile and run, 
+modify and do whatever you like with the example code.
 
-The code can be assembled with Kick Assembler https://theweb.dk/KickAssembler but if you only want to test, I included the .prg executable files that you can insert into an emulator or write to cassettes, floppies or whatever that makes you happy :)
+The code can be assembled with Kick Assembler https://theweb.dk/KickAssembler but if you only want to test,
+I included the .prg executable files that you can insert into an emulator or write to cassettes, 
+floppies or whatever that makes you happy :)
 ```

@@ -1,7 +1,7 @@
 .encoding "petscii_upper" //; to tell KickAssembler that our "hello_world:" directive 
                           //; .text is petscii upper encoded
-BasicUpstart2(main)       //; boilerplate code because the first 800 addresses of the 
-main:                     //;C64 is reserved, so it will put our program start to 801
+BasicUpstart2(main)       //; boilerplate code because the first $800 addresses of the 
+main:                     //;C64 is reserved, so it will put our program start to $801
 
     ldx #$00                    //; loads X index register with actual number (#) hex ($) 00 = 0
 
