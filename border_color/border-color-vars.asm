@@ -1,7 +1,5 @@
-//
-// Creating variables and storing colors in them
-// then loading them into border color address
-//
+//; Creating variables and storing colors in them
+//; then loading them into border color address
 
 BasicUpstart2(main)
 main:
@@ -10,12 +8,12 @@ main:
 
     rts
 
-// All 16 possible colors for C16
-//
-//And you see an example of simple 
-//variable declaration and assignment
-//
-//HEX, BIN, DEC Assignment all valid
+//; All 16 possible colors for C16
+//;
+//; And you see an example of simple 
+//; variable declaration and assignment
+//;
+//; HEX, BIN, DEC Assignment all valid
 COLOR_BLACK:        .byte $00 
 COLOR_WHITE:        .byte $01
 COLOR_RED:          .byte $02
