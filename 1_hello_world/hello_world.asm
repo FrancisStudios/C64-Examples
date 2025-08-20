@@ -47,7 +47,6 @@ hello_world: .text "HELLO WORLD" //; petscii only recognises uppercase letters
 //; basically i++ or rather x++ in this case :D 
 //;
 //; Then we jump up to the [loop label to start it again]
-//; See my C equivalent in hello_world.c (from this directory) 
 //;
 //; I HOPE MY EXPLANATION MAKES SENSE AND YOU COULD LEARN THE WORKINGS OF THIS SIMPLE PROGRAM ON
 //; STEROIDS. I KNOW ASM NEEDS SOME GETTING USED TO COMPARED TO HIGHER LEVEL LANGS (EVEN C OR C++)
