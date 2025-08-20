@@ -1,6 +1,4 @@
-//
 //  Simplest way to change the border 53280 (or $d020)
-//
 
 BasicUpstart2(main)
 
