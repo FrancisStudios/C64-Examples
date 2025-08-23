@@ -18,7 +18,7 @@ floppies or whatever that makes you happy :)
 2) 💡 [2_constants_and_variables](./2_constants_and_variables/) one of the most important parts of any programming language. Simple and easy concept to grasp, and important to master.
 
 3) 💡 [3_basic_arithmetic_registers](./3_basic_arithmetic_registers/) there are 3 registers (there are two + 1 more later)
- in the MOS 6502 CPU 'A' and two index registers 'X' and 'Y' here we learn about them.
+ in the MOS 6502 / 6510 CPU 'A' and two index registers 'X' and 'Y' here we learn about them.
 
 4) 💡 [4_tables](./4_tables/) we already checked out variables so talbes are pretty simple to get some grasp on. They can work similarly to arrays in modern programming.
 
@@ -52,7 +52,9 @@ only just a few lines of assembly code. ![image](./res/screen-color-text-demo.pn
 ## Sources
 `Here I list some sources you can use for learning`
 
-- [C45 Instructions](https://c64os.com/post/6502instructions)
+- [C64 Instructions](https://c64os.com/post/6502instructions)
+- [C64 Screen Codes](https://sta.c64.org/cbm64scr.html)
+- [C64 Color Codes](https://sta.c64.org/cbm64col.html)
 
 ## Credits
 
