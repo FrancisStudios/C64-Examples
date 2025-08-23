@@ -15,7 +15,7 @@ Write a program in C64 ASM
 3) Set the text color to orange (address $0286 as we
 haven't seen this before - this is a new info unlocked ^^)
 4) Clear the screen (JSR $E544)
-5) Write "First challenge beaten, hurray!" to the screen
+5) Write "FIRST CHALLENGENGE BEATEN, HURRAY!" to the screen
 ```
 
 You can use this color table as a provided cheat sheet
@@ -38,3 +38,9 @@ COLOR_LIGHT_GREEN:  .byte $0D
 COLOR_LIGHT_BLUE:   .byte $0E
 COLOR_LIGHT_GREY:   .byte $0F
 ```
+
+## GOOD LUCK!
+
+here is the end result that you should expect
+
+![image](../res/challenge-1-solution.png)
