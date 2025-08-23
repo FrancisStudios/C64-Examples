@@ -17,7 +17,7 @@ floppies or whatever that makes you happy :)
 
 2) 💡 [2_constants_and_variables](./2_constants_and_variables/) one of the most important parts of any programming language. Simple and easy concept to grasp, and important to master.
 
-3) 💡 [3_basic_arithmetic_registers](./3_basic_arithmetic_registers/) there are 3 registers (there are two + 1 more later) in the MOS 6410 CPU 'A' and two index registers 'X' and 'Y' here we learn about them.
+3) 💡 [3_basic_arithmetic_registers](./3_basic_arithmetic_registers/) there are 3 registers (there are two + 1 more later) in the MOS 6502 CPU 'A' and two index registers 'X' and 'Y' here we learn about them.
 
 4) 💡 [4_tables](./4_tables/) we already checked out variables so talbes are pretty simple to get some grasp on. They can work similarly to arrays in modern programming.
 
@@ -27,7 +27,11 @@ I encourage trial and error ways of learning.
 
 6) 🏁 [FIRST_CHALLENGE](./6_FIRST_CHALLENGE/) we have learned enough, that you can start writing your own simple programs. I encourage that you write as many as you can, so you discover all the pitfalls and best practices of the concepts we have learned. ![image](./res/challenge-1-solution.png)
 
-7) 💡 [7_basic_math_with_c64](./7_basic_math_with_c64/) we have learned about the 'A' register and hint about it's math capabilities so let's check out how it works.
+7) 💡 [7_basic_math_with_c64](./7_basic_math_with_c64/) we have learned about the 'A' register and hint about it's math capabilities so let's check out how it works. In this example we learn simple 8 bit addition and subtraction. Division
+and multiplication is not built in to the CPU - so if you need something like 
+that, you have to program it yourself. That's a great excersize after this
+chapter (maybe a little bit too advanced, but if you feel adventureous you can
+try a simple multiplier). 
 
 ## Credits
 
