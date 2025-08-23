@@ -12,3 +12,29 @@ The code can be assembled with Kick Assembler https://theweb.dk/KickAssembler bu
 I included the .prg executable files that you can insert into an emulator or write to cassettes, 
 floppies or whatever that makes you happy :)
 ```
+## Learning path
+1) 💡 [1_border_color](./1_border_color/) - setting the border color is very easy and equally rewarding. You can do something flashy, with a short bit of code to modify the outlook of your target machine. **You can start to understand the process from here.** You can check out the `/all_colors` directory below to learn more.
+
+2) 💡 [2_constants_and_variables](./2_constants_and_variables/) one of the most important parts of any programming language. Simple and easy concept to grasp, and important to master.
+
+3) 💡 [3_basic_arithmetic_registers](./3_basic_arithmetic_registers/) there are 3 registers (there are two + 1 more later) in the MOS 6410 CPU 'A' and two index registers 'X' and 'Y' here we learn about them.
+
+4) 💡 [4_tables](./4_tables/) we already checked out variables so talbes are pretty simple to get some grasp on. They can work similarly to arrays in modern programming.
+
+5) 💡 [5_hello_world](./5_hello_world/) the first complex program we write in this tutorial package. **This is complex, so don't get discouraged if it is hard at first** then it will be very satisfying when you understand how it works. 
+I explained every step in comments, so hopefully you will get the hang of it with a little bit of playing around.
+I encourage trial and error ways of learning. 
+
+6) 🏁 [FIRST_CHALLENGE](./6_FIRST_CHALLENGE/) we have learned enough, that you can start writing your own simple programs. I encourage that you write as many as you can, so you discover all the pitfalls and best practices of the concepts we have learned. ![image](./res/challenge-1-solution.png)
+
+7) 💡 [7_basic_math_with_c64](./7_basic_math_with_c64/) we have learned about the 'A' register and hint about it's math capabilities so let's check out how it works.
+
+## Credits
+
+A useful resource from a very nice and smart guy on youtube who explains the concepts
+in details. This example list is somewhat following his tutorials. 
+I highly suggest his tutorials on the topic:
+
+[▶️ C64 Assembly Programming Course](https://youtube.com/playlist?list=PLU1o_YShTPgoA7_nZ0PutqaPDsitA5RvV&si=jpkUdWcX8eb1PapG)
+
+And also you can check out his channel [Commodore Tutorials](https://www.youtube.com/@board-b-tutorials/featured)

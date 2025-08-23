@@ -40,6 +40,11 @@ accumulatorA: .byte 1
 indexX: .byte 2
 indexY: .byte 3
 
+//; 'A' register is a special one, because as you see system calls pull their data
+//; from the A register - just like jsr $ffd2 (character out command) does in this 
+//; example. But later on when we will learn about math, we will see that 'A' 
+//; register is where we will do the math operations.
+
 //; So in this example we've seen the three basic registers in a very surfacial overview (just loading and storing)
 //; In the future we will learn about the Stack Pointer register (which is an index register just like X and Y )
 //; And Program Counter and the Status Register 
