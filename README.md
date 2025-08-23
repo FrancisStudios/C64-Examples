@@ -42,6 +42,11 @@ try a simple multiplier).
 8) 💡 [8_if_else_branching](./8_if_else_branching/) One of the most important aspect of every programming language is to be able to build a control flow
 in this chapter we'll learn about the BEQ, BCC, BCS opcodes to be able to create branches on previous comparisons (CPX, CPY)
 
+## Sources
+`Here I list some sources you can use for learning`
+
+- [C45 Instructions](https://c64os.com/post/6502instructions)
+
 ## Credits
 
 A useful resource from a very nice and smart guy on youtube who explains the concepts
