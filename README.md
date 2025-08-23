@@ -42,6 +42,13 @@ try a simple multiplier).
 8) 💡 [8_if_else_branching](./8_if_else_branching/) One of the most important aspect of every programming language is to be able to build a control flow
 in this chapter we'll learn about the BEQ, BCC, BCS opcodes to be able to create branches on previous comparisons (CPX, CPY)
 
+9) 💡 [9_screen_memory](./9_screen_memory/) We will see in this chapter (or example) that we can address every single cell (8px x 8px area) of the screen
+from the address `$0400` we can start addressing each cell one by one, storing
+a screen code - which represents a symbol (letter, number or some special character) -
+and from the memory `$d800` we can use our favourite 16 colors in quite the
+fun configurations, so we will be able to generate something like this, with
+only just a few lines of assembly code. ![image](./res/screen-color-text-demo.png)
+
 ## Sources
 `Here I list some sources you can use for learning`
 

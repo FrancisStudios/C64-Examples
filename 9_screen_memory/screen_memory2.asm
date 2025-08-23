@@ -23,3 +23,4 @@ main:
     rts
 
 //; If you run this, it will print 255 characters in screen code order to the first 255 cells
+//; Let's continue with colors in the next file screen_memory3_colors.asm
