@@ -15,7 +15,7 @@
 //; the instructions should be printed onto the screen 
 //;
 //; Let's see if you can do that alone, and compare it to this afterwards :) 
-//; You can use the branching to see the new opcodes :) 
+//; You can use the branching to see the new mnemonics :) 
 
 BasicUpstart2(main)
 main:

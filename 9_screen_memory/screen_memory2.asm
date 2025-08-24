@@ -13,7 +13,7 @@ main:
                                                         //; and always print them into the next cell. Just follow me...
 
         txa                                             //; Copy the contents of X register to A register A = X assignment 
-                                                        //; easy opcode to remember (Transfer X to A)
+                                                        //; easy mnemonic to remember (Transfer X to A)
         sta $400, x                                     //; Store the accumulator into the first cell's memory with X offset
                                                         //; so storing 1 at $401 or storing 2 at $402 basically (just a clever trick)
         inx                                             //; x++;

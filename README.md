@@ -40,7 +40,7 @@ chapter (maybe a little bit too advanced, but if you feel adventureous you can
 try a simple multiplier). 
 
 8) 💡 [8_if_else_branching](./8_if_else_branching/) One of the most important aspect of every programming language is to be able to build a control flow
-in this chapter we'll learn about the BEQ, BCC, BCS opcodes to be able to create branches on previous comparisons (CPX, CPY)
+in this chapter we'll learn about the BEQ, BCC, BCS mnemonics (bsc opcodes) to be able to create branches on previous comparisons (CPX, CPY)
 
 9) 💡 [9_screen_memory](./9_screen_memory/) We will see in this chapter (or example) that we can address every single cell (8px x 8px area) of the screen
 from the address `$0400` we can start addressing each cell one by one, storing
@@ -55,6 +55,7 @@ only just a few lines of assembly code. ![image](./res/screen-color-text-demo.pn
 - [C64 Instructions](https://c64os.com/post/6502instructions)
 - [C64 Screen Codes](https://sta.c64.org/cbm64scr.html)
 - [C64 Color Codes](https://sta.c64.org/cbm64col.html)
+- [C64 Memory Map](https://sta.c64.org/cbm64mem.html)
 
 ## Credits
 
