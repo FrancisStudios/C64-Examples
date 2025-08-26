@@ -1,33 +1,41 @@
-//; This example puts a COLORED text in the middle of the screen using the 
-//; screen text and color memories. Everything is variablized for clean code
+//; Text to center example | Press Enter to RTS | C64-Examples @ francisstudios:github
+BasicUpstart2(programMain)
 
+programMain:
+        jsr $e544                   //; CLR SCREEN kernal routine
+        clc                         //; clear carry bit
 
-BasicUpstart2(main)
+        ldx #$00                    //; initialize X register at 00
 
-main:
+    drawText:                       //; text draw 'sub'
 
-    jsr $e544
-    clc
+        stx $1000                   //; store x at mem address $1000 hence we use it as a counter and
+        ldx X_POSITION              //; for coordinates - this line loads x position which is Y in real life
+        ldy Y_POSITION              //; loads Y position (which is X in real life) everything is swapped
+        inc Y_POSITION              //; Y variable ++
+        jsr $fff0                   //; PUT CURSOR to X_POSITION, Y_POSITION kernal routine
+        
+        ldx $1000                   //; load back counter from address $1000 to X register
+        lda TEXT, x                 //; read text byte at position x (counter)
+        beq pause                   //; if text is ready     ->     pause
+        jsr $ffd2                   //; if text is not ready ->     CHR OUT kernal routine
+        inx                         //; x++
 
-    ldx #$00
+        jmp drawText                //; goto drawText
 
-    drawText:
-        lda TEXT_1, x
-        beq exit
-        sta $0400, x
-        inx
-        jmp drawText
+    pause:                          //; pause 'sub'
+        jsr $ffe4                   //; READ KEYB kernal routine
+        beq pause                   //; if no entry             ->      goto PAUSE
+        cmp #$0d                    //; if [keycode for enter]  ->      <nextLineWillBeIgnored> -> exit
+        bne pause                   //; if not equals [enter]   ->      goto PAUSE
 
     exit:
-        rts
+        rts                         //; return from sub
 
 
- .label X_POSITION=10
- .label Y_POSITION=10
-
-TEXT_1: 
-    .byte $03, $05, $0E, $14, $05, $12, $05, $04, $20, $14, $05, $18, $14
+X_POSITION: .byte 11                //; x-pos variable (could be constant too, but it's nicer since Y has to be var)
+Y_POSITION: .byte 8                 //; y-pos variable (secretly X) -> has to be var because it is increased on line
+                                    //;                                                                           14
+TEXT:
+    .text "TEXT TO CENTER EXAMPLE"
     .byte $00
-
- TEXT_2: .text "GITHUB.COM/FRANCISSTUDIOS"
-         .byte 0
