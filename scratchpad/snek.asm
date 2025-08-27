@@ -24,11 +24,8 @@ snek:
                     beq youDied
                     cmp #$06
                     beq quitGame
-    
     rtsg:
-                    jsr $ffe1
-                    jsr $ffe4
-                    cmp #$0d
+                    cmp $d012                   //; A memory address for the scr refresh
                     beq snek
                     jmp rtsg
         
@@ -83,24 +80,21 @@ _pauseScreen:
 
 _requestKeyPress:
                     jsr $ffe1                   //; CLR KEYB BUFFER subroutine from Kernal
-
                     jsr $ffe4                   //; GETIN() sub from Kernal -> Accumulator
 
                     cmp #$57                    //; ASCII code for W
                     beq pressedUp
-
                     cmp #$41                    //; ASCII code for A
                     beq pressedLeft
-
                     cmp #$53                    //; ASCII code for S
                     beq pressedDown
-
                     cmp #$44                    //; ASCII code for D 
                     beq pressedRight   
-
                     cmp #$51                    //; Q for quit - as it's common in DOS games 
                     beq pressedQuit
-                    
+                    cmp #$0d                    //; Start Game
+                    //beq pressedEnter            
+
                     jsr $ffe1                   //; Clear keyboard buffer just because I'm OCD
                     rts
 
@@ -126,8 +120,8 @@ pressedQuit:
                     lda #$05
                     sta gameState
                     jmp rtsg
-                                           
 
+                                           
 //; Variable pool - have a dive ^^
 posX:
                     .byte 19
@@ -136,13 +130,17 @@ posY:
                     .byte 11
 
 gameState:
-                    .byte 1                 //; 1 - Move UP
+                    .byte 0                 //; 1 - Move UP
                                             //; 2 - Move DOWN
                                             //; 3 - Move LEFT
                                             //; 4 - Move RIGHT
                                             //; 5 - You  DIED
                                             //; 6 - Q    QUIT
+                                            //; 0 - Not started
 
 head:
                     .text "A"
                     .byte 0
+
+speed:              .byte 5
+counter:            .byte 0
