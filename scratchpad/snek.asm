@@ -9,8 +9,52 @@ snek:
                     lda head
                     jsr $ffd2
                     jsr _requestKeyPress
+
+                                                //; GameState Controller
+                    lda gameState
+                    cmp #$01
+                    beq moveUp
+                    cmp #$02
+                    beq moveDown
+                    cmp #$03
+                    beq moveLeft
+                    cmp #$04
+                    beq moveRight
+                    cmp #$05
+                    beq youDied
+                    cmp #$06
+                    beq quitGame
+    
+    rtsg:
+                    jsr $ffe1
+                    jsr $ffe4
+                    cmp #$0d
+                    beq snek
+                    jmp rtsg
+        
+
+//; GameState Instructions
+moveUp:
+                    dec posY                    //; Y--
+                    jmp rtsg
+
+moveDown:
+                    inc posY                    //; Y++
+                    jmp rtsg
+
+moveLeft:
+                    dec posX                    //; X--
+                    jmp rtsg
+
+moveRight:
+                    inc posX                    //; X++
+                    jmp rtsg
+
+quitGame:
                     jmp exit
 
+youDied:
+                    jmp quitGame 
 
 
 
@@ -57,33 +101,32 @@ _requestKeyPress:
                     cmp #$51                    //; Q for quit - as it's common in DOS games 
                     beq pressedQuit
                     
-                    bne snek
                     jsr $ffe1                   //; Clear keyboard buffer just because I'm OCD
                     rts
 
 
-
-//; Direction Key Instructions
-pressedUp:
-                    dec posY                    //; Y--
-                    jmp snek
-
-pressedDown:
-                    inc posY                    //; Y++
-                    jmp snek
-
+//; Keyboard Instructions
+pressedUp:          
+                    lda #$01
+                    sta gameState
+                    jmp rtsg
+pressedDown:        
+                    lda #$02
+                    sta gameState
+                    jmp rtsg
 pressedLeft:
-                    dec posX                    //; X--
-                    jmp snek
-
-pressedRight:
-                    inc posX                    //; X++
-                    jmp snek
-
-pressedQuit:
-                    jmp exit
-                                                
-                                                
+                    lda #$03
+                    sta gameState 
+                    jmp rtsg      
+pressedRight:       
+                    lda #$04
+                    sta gameState
+                    jmp rtsg
+pressedQuit:        
+                    lda #$05
+                    sta gameState
+                    jmp rtsg
+                                           
 
 //; Variable pool - have a dive ^^
 posX:
@@ -92,6 +135,13 @@ posX:
 posY:
                     .byte 11
 
+gameState:
+                    .byte 1                 //; 1 - Move UP
+                                            //; 2 - Move DOWN
+                                            //; 3 - Move LEFT
+                                            //; 4 - Move RIGHT
+                                            //; 5 - You  DIED
+                                            //; 6 - Q    QUIT
 
 head:
                     .text "A"
