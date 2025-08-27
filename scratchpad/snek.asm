@@ -56,7 +56,9 @@ youDied:
 
 
 //; Subroutines and labels from this point 
-exit:                                           //; labels I sign without underscore (to diff)
+exit:                                          //; labels I sign without underscore (to diff)
+                    lda #$00
+                    sta gameState                           
                     rts
 
 _moveCursor2Pos:                                //; And subroutine names I sign with an underscore
