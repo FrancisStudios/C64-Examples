@@ -49,6 +49,11 @@ and from the memory `$d800` we can use our favourite 16 colors in quite the
 fun configurations, so we will be able to generate something like this, with
 only just a few lines of assembly code. ![image](./res/screen-color-text-demo.png)
 
+10) 💡 [10_keyboard_detection](./10_keyboard_detection/) detecting keyboard strokes is a
+pretty important feature for any computer program - especially for a commodore 64 program. 
+When we try to control our player in games, or select options in a program, we rely on the computer being able to capture our keyboard strokes runtime and use it
+to compute some outcome (move a sprite on x or y axis or dispatch some event, or calculate with the keycode of the triggered key)
+
 ## Sources
 `Here I list some sources you can use for learning`
 
