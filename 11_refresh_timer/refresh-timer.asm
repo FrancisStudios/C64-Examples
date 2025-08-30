@@ -9,6 +9,8 @@ main:
                         clc
                         ldx #$00
     messageLoop:
+                        lda #$00
+                        sta greenFlag
                         ldx $1000
                         lda message, x
                         beq exitProgram
@@ -18,7 +20,7 @@ main:
 
     probeForNextGreenLight:
                         jsr timer
-                        lda $1001
+                        lda greenFlag
                         cmp #$01
                         beq messageLoop
                         jmp probeForNextGreenLight
@@ -27,20 +29,29 @@ main:
 
 
     timer:
-                        jsr $ffe1
-                        jsr $ffe4
-                        cmp #$0d
-                        bne resetTimer
-                        lda #$01
-                        sta $1001
+                        lda timerCurrent
+                        cmp timerLimit
+                        beq resetTimer
+                        jsr timerOSC
             timerExit:  rts
 
     resetTimer:
-        lda #$00
-        sta $1001
-        jmp timerExit
+                        lda #$01
+                        sta greenFlag
+                        lda #$00
+                        sta timerCurrent
+                        jmp timerExit
 
+    timerOSC:
+                        jsr $ffe1
+                        jsr $ffe4
+                        cmp #$0d
+                        bne timerOSC
+                        inc timerCurrent
+                        rts
 
-
+timerLimit:             .byte 10
+timerCurrent:           .byte 0
+greenFlag:              .byte $00
 message:                .text "VERY SLOWLY TYPED MESSAGE"
                         .byte 0
