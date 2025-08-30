@@ -13,7 +13,7 @@ main:
                         sta greenFlag
                         ldx $1000
                         lda message, x
-                        beq exitProgram
+                        beq checkForQuit
                         jsr $ffd2
                         inx
                         stx $1000
@@ -24,6 +24,15 @@ main:
                         cmp #$01
                         beq messageLoop
                         jmp probeForNextGreenLight
+
+    checkForQuit:       
+                        jsr $ffe1
+                        jsr $ffe4
+                        cmp #$51
+                        beq exitProgram
+                        lda #$00
+                        txa
+                        jmp messageLoop
     exitProgram:
                         rts
 
@@ -43,15 +52,13 @@ main:
                         jmp timerExit
 
     timerOSC:
-                        jsr $ffe1
-                        jsr $ffe4
-                        cmp #$0d
+                        cmp $d012
                         bne timerOSC
                         inc timerCurrent
                         rts
 
-timerLimit:             .byte 10
+timerLimit:             .byte $ff
 timerCurrent:           .byte 0
 greenFlag:              .byte $00
-message:                .text "VERY SLOWLY TYPED MESSAGE"
+message:                .text "SLOWLY TYPED MESSAGE - PRESS Q TO EXIT"
                         .byte 0
