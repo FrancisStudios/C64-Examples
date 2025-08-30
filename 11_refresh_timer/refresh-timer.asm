@@ -18,8 +18,8 @@ main:
                         inx
                         stx $1000
 
-    probeForNextGreenLight:
-                        jsr timer
+    probeForNextGreenLight:                                     //; We use a green light system here, so IF there is a green light
+                        jsr timer                               //; then message loop can proceed with 1 character more
                         lda greenFlag
                         cmp #$01
                         beq messageLoop
@@ -38,24 +38,24 @@ main:
 
 
     timer:
-                        lda timerCurrent
-                        cmp timerLimit
-                        beq resetTimer
-                        jsr timerOSC
+                        lda timerCurrent                            //; We compare current timer value with timer limit (it's the time delay)
+                        cmp timerLimit                              //; timer limit is set to max $ff - we have to count 255 refreshes for one
+                        beq resetTimer                              //; timer tick
+                        jsr timerOSC                        
             timerExit:  rts
 
     resetTimer:
-                        lda #$01
-                        sta greenFlag
+                        lda #$01                                    //; when we reset the timer, we activate the green flag
+                        sta greenFlag                               //; and reset timerCurrent = 0
                         lda #$00
                         sta timerCurrent
                         jmp timerExit
 
     timerOSC:
-                        cmp $d012
-                        bne timerOSC
-                        inc timerCurrent
-                        rts
+                        cmp $d012                                     //; This is the oscillator for our timer $d012 - raster refresh flag
+                        bne timerOSC                                  //; if not refreshed then wait until it is 
+                        inc timerCurrent                              //; -when refreshed timerCurrent++
+                        rts                                           //; return to caller
 
 timerLimit:             .byte $ff
 timerCurrent:           .byte 0
