@@ -5,47 +5,42 @@
 BasicUpstart2(main)
 
 main:
+                        jsr $e544
+                        clc
+                        ldx #$00
+    messageLoop:
+                        ldx $1000
+                        lda message, x
+                        beq exitProgram
+                        jsr $ffd2
+                        inx
+                        stx $1000
 
-                jsr $e544
-                clc
-                ldx #$00
-                ldy #$00
-
-            textLoop:
-                jsr _myTimer
-                jmp textLoop
-                
-            
-            endProgram:
-                rts
-
-            
-            fetchNextCharacter:
-                lda slowText, x
-                beq endProgram
-                jsr $ffd2
-                inx 
-                jmp textLoop
+    probeForNextGreenLight:
+                        jsr timer
+                        lda $1001
+                        cmp #$01
+                        beq messageLoop
+                        jmp probeForNextGreenLight
+    exitProgram:
+                        rts
 
 
-            _myTimer:
-                cmp $d012                               //; This is a Raster interrupt changes from 1 - 0 at new passes
-                beq addOneToTheTimerCounter             //; we check it when It happens and only fetch next character at 60Hz/50Hz
+    timer:
+                        jsr $ffe1
+                        jsr $ffe4
+                        cmp #$0d
+                        bne resetTimer
+                        lda #$01
+                        sta $1001
+            timerExit:  rts
+
+    resetTimer:
+        lda #$00
+        sta $1001
+        jmp timerExit
 
 
-            addOneToTheTimerCounter:
-                lda timerCounter
-                cmp timerCounterLimit
-                beq resetTimer
-                inc timerCounter
-                
 
-
-slowText:
-                .text "THIS TEXT IS WRITTEN WITH A 60HZ TIMER"
-                .byte 0
-
-timerCounter:   
-                .byte $00
-timerCounterLimit:
-                .byte 10
+message:                .text "VERY SLOWLY TYPED MESSAGE"
+                        .byte 0
