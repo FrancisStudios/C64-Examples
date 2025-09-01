@@ -8,11 +8,13 @@ main:
 
     gameLoop:
                                 jsr _drawStaticElements
-                                jsr $ffe1
+                    getKey:     jsr $ffe1
                                 jsr $ffe4
                                 cmp #$51
                                 beq terminateProgram
-                                jmp gameLoop
+                                cmp #$0d
+                                beq gameLoop
+                                jmp getKey
 
                         //; Drawing the static elements like the middle line and the points
     _drawStaticElements:
@@ -27,7 +29,7 @@ main:
                                 ldx #$00
                 netDrawLoop:    cpx #25
                                 beq exitDrawNet
-                                ldy #$13
+                                jsr _oddOrEvenLine
                                 jsr $fff0
                                 lda #$a6
                                 jsr $ffd2
@@ -36,6 +38,16 @@ main:
                
                 exitDrawNet:    rts
 
+                _oddOrEvenLine:
+                                lda netSideParity
+                                cmp #$00
+                                beq oddParity
+                                ldy #$13          
+                                dec netSideParity
+                                rts
+                    oddParity:  ldy #$14          
+                                inc netSideParity
+                                rts
 
     terminateProgram:
                                 rts
